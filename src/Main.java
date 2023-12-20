@@ -29,13 +29,10 @@ public class Main {
         laptops.add(new Laptop("Dell", 320, 32, "Linux", "Black"));
         laptops.add(new Laptop("Dell", 500, 64, "Windows 11", "Blue"));
 
-
         Methods.showParametersSelection();
         Methods.selectionNumberParameter();
         Methods.showSelections();
         Methods.showLaptops();
 
-
     }
-
 }

@@ -1,4 +1,5 @@
-public class Laptop {
+public class Laptop implements Comparable<Laptop> {
+
     private String name;
     private int hard;
     private int ram;
@@ -7,7 +8,7 @@ public class Laptop {
     private int id;
     private static int count = 1;
 
-    public Laptop(String name,int hard, int ram, String os, String color) {
+    public Laptop(String name, int hard, int ram, String os, String color) {
         this.name = name;
         this.hard = hard;
         this.ram = ram;
@@ -20,15 +21,19 @@ public class Laptop {
     public static int getCount(int count) {
         return count;
     }
+
     public String getName() {
         return name;
     }
+
     public int getHard() {
         return hard;
     }
+
     public int getRam() {
         return ram;
     }
+
     public String getOs() {
         return os;
     }
@@ -46,5 +51,10 @@ public class Laptop {
                 ", оперативная память: " + ram + " GB " +
                 ", оперативная система: " + os +
                 ", цвет модели: " + color;
+    }
+    @Override
+    public int compareTo(Laptop l) {
+        return this.id - l.id;
+
     }
 }

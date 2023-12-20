@@ -39,7 +39,7 @@ public class Laptop {
 
     @Override
     public String toString() {
-        return "Ноутбук" +
+        return "Ноутбук: " +
                 "id" + id +
                 " Модель: " + name +
                 ", жесткий диск: " + hard + " GB " +

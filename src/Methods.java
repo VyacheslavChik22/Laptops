@@ -26,10 +26,14 @@ public class Methods {
             while (numberSelection != 5) {
                 numberSelection = scanner.nextInt();
                 if (numberSelection > 0 && numberSelection <= 5) {
-                    if(numberSelection == 1)information.put(numberSelection,"Вы выбрали параметр: " + numberSelection + " " + criterion.get(numberSelection) + ". Мы покажем вам какие модели по этому параметру у нас сейчас в наличии: ");
-                    if(numberSelection == 2)information.put(numberSelection,"Вы выбрали параметр: " + numberSelection + " " + criterion.get(numberSelection) + ". Мы покажем вам какие модели по этому параметру у нас сейчас в наличии: ");
-                    if(numberSelection == 3)information.put(numberSelection,"Вы выбрали параметр: " + numberSelection + " " + criterion.get(numberSelection) + ". Мы покажем вам какие модели по этому параметру у нас сейчас в наличии: ");
-                    if(numberSelection == 4)information.put(numberSelection,"Вы выбрали параметр: " + numberSelection + " " + criterion.get(numberSelection) + ". Мы покажем вам какие модели по этому параметру у нас сейчас в наличии: ");
+                    if (numberSelection == 1)
+                        information.put(numberSelection, "Вы выбрали параметр: " + numberSelection + " " + criterion.get(numberSelection) + ". Мы покажем вам какие модели по этому параметру у нас сейчас в наличии: ");
+                    if (numberSelection == 2)
+                        information.put(numberSelection, "Вы выбрали параметр: " + numberSelection + " " + criterion.get(numberSelection) + ". Мы покажем вам какие модели по этому параметру у нас сейчас в наличии: ");
+                    if (numberSelection == 3)
+                        information.put(numberSelection, "Вы выбрали параметр: " + numberSelection + " " + criterion.get(numberSelection) + ". Мы покажем вам какие модели по этому параметру у нас сейчас в наличии: ");
+                    if (numberSelection == 4)
+                        information.put(numberSelection, "Вы выбрали параметр: " + numberSelection + " " + criterion.get(numberSelection) + ". Мы покажем вам какие модели по этому параметру у нас сейчас в наличии: ");
 
                 } else {
                     System.out.println(error);
@@ -41,48 +45,58 @@ public class Methods {
         scanner.close();
         return information;
     }
-   public static void showSelections(){
 
-       for (Map.Entry<Integer,String> item : information.entrySet()) {
-           System.out.println(item.getValue());
-       }
-   }
+    public static void showSelections() {
+        for (Map.Entry<Integer, String> item : information.entrySet()) {
+            System.out.println(item.getValue());
+        }
+    }
 
     public static void showLaptops() {
         Set<String> list = new TreeSet<>();
-        switch (numberSelection) {
-            case 1:
+        for (Map.Entry<Integer, String> item : information.entrySet()) {
+            if (item.getKey() == 1) {
                 for (Laptop laptopsSelection : Main.laptops) {
                     list.add(laptopsSelection.getRam() + " GB" + " : " + laptopsSelection.getName());
                 }
+                System.out.println("\tНоутбуки по объёму оперативной памяти:");
                 for (String showRam : list) {
                     System.out.println(showRam);
                 }
-                break;
-            case 2:
+            }
+
+            if (item.getKey() == 2) {
                 for (Laptop laptopsSelection : Main.laptops) {
                     list.add(laptopsSelection.getHard() + " GB" + " : " + laptopsSelection.getName());
                 }
+                System.out.println("\tНоутбуки по объёму жесткого диска:");
                 for (String showHard : list) {
                     System.out.println(showHard);
                 }
-                break;
-            case 3:
+            }
+
+            if (item.getKey() == 3) {
                 for (Laptop laptopsSelection : Main.laptops) {
                     list.add("OS " + laptopsSelection.getOs() + " : " + laptopsSelection.getName());
                 }
+                System.out.println("\tНоутбуки по Оперативной системе:");
+
                 for (String showOs : list) {
                     System.out.println(showOs);
                 }
-                break;
-            case 4:
+            }
+
+            if (item.getKey() == 4) {
                 for (Laptop laptopsSelection : Main.laptops) {
                     list.add("Цвет " + laptopsSelection.getColor() + " : " + laptopsSelection.getName());
                 }
+                System.out.println("\tНоутбуки по цвету:");
                 for (String showColor : list) {
                     System.out.println(showColor);
                 }
-                break;
+            }
+
         }
+
     }
 }

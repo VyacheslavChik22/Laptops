@@ -45,16 +45,16 @@ public class Laptop implements Comparable<Laptop> {
     @Override
     public String toString() {
         return "Ноутбук: " +
-                "id" + id +
+                id +
                 " Модель: " + name +
                 ", жесткий диск: " + hard + " GB " +
                 ", оперативная память: " + ram + " GB " +
                 ", оперативная система: " + os +
                 ", цвет модели: " + color;
     }
+
     @Override
     public int compareTo(Laptop l) {
         return this.id - l.id;
-
     }
 }

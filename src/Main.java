@@ -43,6 +43,5 @@ public class Main {
         Methods.selectionNumberParameter();
         Methods.showSelections();
         Methods.showLaptops();
-
     }
 }

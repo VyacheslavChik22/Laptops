@@ -81,7 +81,7 @@ public class Methods {
         criterion.put(2, "Ram");
         criterion.put(3, "Operation System");
         criterion.put(4, "Color");
-        criterion.put(5, "showOllLaptops");
+        criterion.put(5, "showOll");
         System.out.println("Вы можете выбрать ноутбук по этим параметрам:");
         for (Map.Entry<Integer, String> parameters : criterion.entrySet()) {
             System.out.println(parameters);
@@ -180,7 +180,7 @@ public class Methods {
                 System.out.println("\tНоутбуки по запрошенной Оперативной системе: " + parametersOs.get(numberSelectionOs));
                 for (Laptop laptopsSelection : Main.laptops) {
                     if (laptopsSelection.getOs() == parametersOs.get(numberSelectionOs)) {
-                        listOs.add("OS " + laptopsSelection.getOs() + " : Модель- " + laptopsSelection.getName() + ", Объем ЖД- " + laptopsSelection.getHard() + "Gb, Цвет- " + laptopsSelection.getColor());
+                        listOs.add("OS " + laptopsSelection.getOs() + " : Модель- " + laptopsSelection.getName() + ", Объем ЖД- " + laptopsSelection.getHard() + " Gb, Цвет- " + laptopsSelection.getColor());
                     }
                 }
                 for (String showOs : listOs) {
@@ -192,7 +192,7 @@ public class Methods {
                 System.out.println("\tНоутбуки по запрошенному цвету: " + parametersColor.get(numberSelectionColors));
                 for (Laptop laptopsSelection : Main.laptops) {
                     if (laptopsSelection.getColor() == parametersColor.get(numberSelectionColors)) {
-                        listColor.add("Color " + laptopsSelection.getColor() + " : Модель- " + laptopsSelection.getName() + ", Объем ЖД- " + laptopsSelection.getHard() + ", Объем ОЗУ- " + laptopsSelection.getRam());
+                        listColor.add("Color " + laptopsSelection.getColor() + " : Модель- " + laptopsSelection.getName() + ", Объем ЖД- " + laptopsSelection.getHard() + " Gb, Объем ОЗУ- " + laptopsSelection.getRam() + " Gb");
                     }
                 }
                 for (String showColor : listColor) {

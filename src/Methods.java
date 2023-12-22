@@ -2,11 +2,79 @@ import java.util.*;
 
 public class Methods {
     static Map<Integer, String> criterion = new HashMap<>();
+    static Set<Integer> ollVolumesHards = new HashSet<>();
+    static Set<Integer> ollVolumesRam = new HashSet<>();
+    static Set<String> ollOs = new HashSet<>();
+    static Set<String> ollColors = new HashSet<>();
+    static Map<Integer, Integer> parametersVolumesHard = new HashMap<>();
+    static Map<Integer, Integer> parametersVolumesRam = new HashMap<>();
+    static Map<Integer, String> parametersOs = new HashMap<>();
+    static Map<Integer, String> parametersColor = new HashMap<>();
     static Map<Integer, String> information = new TreeMap<>();
     static Set<Laptop> stringList = new TreeSet<>();
     static int numberSelection = 0;
-    static int minHard = 0;
-    static int minRam = 0;
+    static int numberSelectionHard = 0;
+    static int numberSelectionRam = 0;
+    static int numberSelectionOs = 0;
+    static int numberSelectionColors = 0;
+
+    public static void ollVolumesHard() {
+        int i = 0;
+        for (Laptop laptopsSelection : Main.laptops) {
+
+            ollVolumesHards.add(laptopsSelection.getHard());
+        }
+        for (Integer volumesHards : ollVolumesHards) {
+            i++;
+            parametersVolumesHard.put(i, volumesHards);
+        }
+        for (Map.Entry<Integer, Integer> itemsVolumesHard : parametersVolumesHard.entrySet()) {
+            System.out.println(itemsVolumesHard + " Gb");
+        }
+    }
+
+    public static void ollVolumesRam() {
+        int i = 0;
+        for (Laptop laptopsSelection : Main.laptops) {
+
+            ollVolumesRam.add(laptopsSelection.getRam());
+        }
+        for (Integer volumesRam : ollVolumesRam) {
+            i++;
+            parametersVolumesRam.put(i, volumesRam);
+        }
+        for (Map.Entry<Integer, Integer> itemsVolumesRam : parametersVolumesRam.entrySet()) {
+            System.out.println(itemsVolumesRam + " Gb");
+        }
+    }
+
+    public static void ollOs() {
+        int i = 0;
+        for (Laptop laptopsSelection : Main.laptops) {
+            ollOs.add(laptopsSelection.getOs());
+        }
+        for (String volumesOs : ollOs) {
+            i++;
+            parametersOs.put(i, volumesOs);
+        }
+        for (Map.Entry<Integer, String> itemsVolumesOs : parametersOs.entrySet()) {
+            System.out.println(itemsVolumesOs);
+        }
+    }
+
+    public static void ollColors() {
+        int i = 0;
+        for (Laptop laptopsSelection : Main.laptops) {
+            ollColors.add(laptopsSelection.getColor());
+        }
+        for (String amountColors : ollColors) {
+            i++;
+            parametersColor.put(i, amountColors);
+        }
+        for (Map.Entry<Integer, String> itemsColors : parametersColor.entrySet()) {
+            System.out.println(itemsColors);
+        }
+    }
 
     public static void showParametersSelection() {
         criterion.put(1, "Hard");
@@ -21,7 +89,7 @@ public class Methods {
 
     }
 
-    public static Map selectionNumberParameter() {
+    public static void selectionNumberParameter() {
         String error = "Неправильно введен номер";
         System.out.println("Для выбора введите цифру нужного параметра");
         Scanner scanner = new Scanner(System.in);
@@ -30,25 +98,33 @@ public class Methods {
                 numberSelection = scanner.nextInt();
                 if (numberSelection > 0 && numberSelection <= 6) {
                     if (numberSelection == 1) {
-                        information.put(numberSelection, "Вы выбрали параметр: " + numberSelection + " -" + criterion.get(numberSelection) + ". Мы покажем вам какие модели по этому параметру у нас сейчас в наличии: ");
-                        System.out.println("Будут показаны модели с минимальным объёмом жесткого диска.");
+                        information.put(numberSelection, "Вы выбрали параметр: " + numberSelection + " -" + criterion.get(numberSelection));
+                        ollVolumesHard();
+                        System.out.println("Введите цифру с интересующим вас объёмом жесткого диска.");
+                        numberSelectionHard = scanner.nextInt();
                         System.out.println("Для поиска введите цифру 6, или выберите дополнительные параметры поиска.");
 
                     }
                     if (numberSelection == 2) {
-                        information.put(numberSelection, "Вы выбрали параметр: " + numberSelection + " -" + criterion.get(numberSelection) + ". Мы покажем вам какие модели по этому параметру у нас сейчас в наличии: ");
-                        System.out.println("Будут показаны  модели с минимальным объемом ОЗУ.");
+                        information.put(numberSelection, "Вы выбрали параметр: " + numberSelection + " -" + criterion.get(numberSelection));
+                        ollVolumesRam();
+                        System.out.println("Введите цифру с интересующим вас объёмом ОЗУ.");
+                        numberSelectionRam = scanner.nextInt();
                         System.out.println("Для поиска введите цифру 6, или выберите дополнительные параметры поиска.");
                     }
                     if (numberSelection == 3) {
-                        System.out.println("Будут показаны  модели с установленной операционной системой.");
+                        information.put(numberSelection, "Вы выбрали параметр: " + numberSelection + " -" + criterion.get(numberSelection));
+                        ollOs();
+                        System.out.println("Введите цифру с интересующей вас операционной системой.");
+                        numberSelectionOs = scanner.nextInt();
                         System.out.println("Для поиска введите цифру 6, или выберите дополнительные параметры поиска.");
-                        information.put(numberSelection, "Вы выбрали параметр: " + numberSelection + " -" + criterion.get(numberSelection) + ". Мы покажем вам какие модели по этому параметру у нас сейчас в наличии: ");
                     }
                     if (numberSelection == 4) {
-                        System.out.println("Будут показаны модели с в цветом решении.");
+                        information.put(numberSelection, "Вы выбрали параметр: " + numberSelection + " -" + criterion.get(numberSelection));
+                        ollColors();
+                        System.out.println("Введите номер цветового решения.");
+                        numberSelectionColors = scanner.nextInt();
                         System.out.println("Для поиска введите цифру 6, или выберите дополнительные параметры поиска.");
-                        information.put(numberSelection, "Вы выбрали параметр: " + numberSelection + " -" + criterion.get(numberSelection) + ". Мы покажем вам какие модели по этому параметру у нас сейчас в наличии: ");
                     }
                     if (numberSelection == 5) {
                         System.out.println("Для поиска введите цифру 6, или выберите дополнительные параметры поиска.");
@@ -62,7 +138,6 @@ public class Methods {
             System.out.println(error);
         }
         scanner.close();
-        return information;
     }
 
     public static void showSelections() {
@@ -78,67 +153,56 @@ public class Methods {
         Set<String> listColor = new TreeSet<>();
         for (Map.Entry<Integer, String> item : information.entrySet()) {
             if (item.getKey() == 1) {
-                List<Integer> tempListHard = new ArrayList<>();
+                System.out.println("\tНоутбуки по запрошенному объёму жесткого диска: " + parametersVolumesHard.get(numberSelectionHard) + " Gb");
                 for (Laptop laptopsSelection : Main.laptops) {
-                    tempListHard.add(laptopsSelection.getHard());
-                }
-                minHard = Collections.min(tempListHard);
-                for (Laptop laptopsSelection : Main.laptops) {
-                    if (laptopsSelection.getHard() == minHard) {
-                        listHard.add(laptopsSelection.getHard() + " Gb" + " : Модель- " + laptopsSelection.getName() + ", Операционная система- " + laptopsSelection.getOs() + ", Объем ЖД- " + laptopsSelection.getHard() + "Gb, Цвет- " + laptopsSelection.getColor());
+                    if (laptopsSelection.getHard() == parametersVolumesHard.get(numberSelectionHard)) {
+                        listHard.add("Hard " + laptopsSelection.getHard() + " Gb" + " : Модель- " + laptopsSelection.getName() + ", Операционная система- " + laptopsSelection.getOs() + ", Цвет- " + laptopsSelection.getColor());
                     }
-
                 }
-                System.out.println("\tНоутбуки по минимальному объёму жесткого диска:");
                 for (String showHard : listHard) {
                     System.out.println(showHard);
                 }
             }
 
             if (item.getKey() == 2) {
-                List<Integer> tempListRam = new ArrayList<>();
+                System.out.println("\tНоутбуки по запрошенному объёму оперативной памяти: " + parametersVolumesRam.get(numberSelectionRam) + " Gb");
                 for (Laptop laptopsSelection : Main.laptops) {
-                    tempListRam.add(laptopsSelection.getRam());
-                }
-                minRam = Collections.min(tempListRam);
-                for (Laptop laptopsSelection : Main.laptops) {
-                    if (laptopsSelection.getRam() == minRam) {
-                        listRam.add(laptopsSelection.getRam() + " GB" + " : Модель- " + laptopsSelection.getName() + ", Операционная система- " + laptopsSelection.getOs() + ", Объем ОЗУ- " + laptopsSelection.getRam() + "Gb, Цвет- " + laptopsSelection.getColor());
+                    if (laptopsSelection.getRam() == parametersVolumesRam.get(numberSelectionRam)) {
+                        listRam.add("Ram " + laptopsSelection.getRam() + " GB" + " : Модель- " + laptopsSelection.getName() + ", Операционная система- " + laptopsSelection.getOs() + ", Цвет- " + laptopsSelection.getColor());
                     }
                 }
-                System.out.println("\tНоутбуки по объёму оперативной памяти:");
                 for (String showRam : listRam) {
                     System.out.println(showRam);
                 }
             }
 
             if (item.getKey() == 3) {
+                System.out.println("\tНоутбуки по запрошенной Оперативной системе: " + parametersOs.get(numberSelectionOs));
                 for (Laptop laptopsSelection : Main.laptops) {
-                    listOs.add("OS " + laptopsSelection.getOs() + " : Модель- " + laptopsSelection.getName() + ", Объем ЖД- " + laptopsSelection.getHard() + "Gb, Цвет- " + laptopsSelection.getColor());
+                    if (laptopsSelection.getOs() == parametersOs.get(numberSelectionOs)) {
+                        listOs.add("OS " + laptopsSelection.getOs() + " : Модель- " + laptopsSelection.getName() + ", Объем ЖД- " + laptopsSelection.getHard() + "Gb, Цвет- " + laptopsSelection.getColor());
+                    }
                 }
-                System.out.println("\tНоутбуки по Оперативной системе:");
-
                 for (String showOs : listOs) {
                     System.out.println(showOs);
                 }
             }
 
             if (item.getKey() == 4) {
+                System.out.println("\tНоутбуки по запрошенному цвету: " + parametersColor.get(numberSelectionColors));
                 for (Laptop laptopsSelection : Main.laptops) {
-                    listColor.add("Цвет " + laptopsSelection.getColor() + " : Модель- " + laptopsSelection.getName() + ", Объем ЖД- " + laptopsSelection.getHard() + ", Объем ОЗУ- " + laptopsSelection.getRam());
+                    if (laptopsSelection.getColor() == parametersColor.get(numberSelectionColors)) {
+                        listColor.add("Color " + laptopsSelection.getColor() + " : Модель- " + laptopsSelection.getName() + ", Объем ЖД- " + laptopsSelection.getHard() + ", Объем ОЗУ- " + laptopsSelection.getRam());
+                    }
                 }
-                System.out.println("\tНоутбуки по цвету:");
                 for (String showColor : listColor) {
                     System.out.println(showColor);
                 }
             }
 
             if (item.getKey() == 5) {
-
                 System.out.println();
-                for (Laptop ollLaptops : Main.laptops) {
-                    stringList.add(ollLaptops);
-                }
+                stringList.addAll(Main.laptops);
                 for (Laptop ollLaptopsList : stringList) {
                     System.out.println(ollLaptopsList.toString());
                 }
